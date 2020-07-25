@@ -5,16 +5,18 @@
 // comment above if you dont want print on serial monitor
 
 #ifdef IS_ATTINY // for attiny
-  byte trigPin = 90;
-  byte echoPin = 80;
+  byte trigPin = 2; 
+  byte echoPin = 3;
+  byte pump = 1;
 #endif
 
 #ifndef IS_ATTINY // for nano
-  byte trigPin = 9;
-  byte echoPin = 8;
+  byte trigPin = 5;
+  byte echoPin = 7;
+  byte pump = 2;
 #endif
 
-byte pump = 8;
+
 byte limit = 5; // change it if needed
 long duration, cm, inches;
 

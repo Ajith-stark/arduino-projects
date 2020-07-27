@@ -5,9 +5,9 @@
 // comment above if you dont want print on serial monitor
 
 #ifdef IS_ATTINY // for attiny
-  byte trigPin = 2;
-  byte echoPin = 3;
-  byte pump = 1;
+  byte trigPin = 1; //  pin P1
+  byte echoPin = 3; // Pin P3
+  byte pump = 0;  // Pin P0
 #endif
 
 #ifndef IS_ATTINY // for nano

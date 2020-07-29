@@ -14,7 +14,7 @@ void setup() {
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   pinMode(pump,OUTPUT);
-  digitalWrite(pump,HIGH);
+  digitalWrite(pump,LOW);
 
 }
 
@@ -38,9 +38,9 @@ void loop() {
   if (cm <= limit) {
       Serial.print("Hand detected !");
 
-    digitalWrite(pump,LOW); // tip32 is pnp so complient value should be used
+    digitalWrite(pump,HIGH); // tip32 is pnp so complient value should be used
     delay(del);
-    digitalWrite(pump,HIGH);
+    digitalWrite(pump,LOW);
   }
   Serial.print("\n");
 

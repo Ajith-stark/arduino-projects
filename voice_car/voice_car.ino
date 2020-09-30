@@ -5,10 +5,9 @@ AF_DCMotor motor2(2);
 AF_DCMotor motor3(3);
 AF_DCMotor motor4(4);
 
-//char BT='S';
 String BT;
-void setup()
-{
+
+void setup(){
   Serial.begin(9600);
   motor1.setSpeed(255);
   motor2.setSpeed(255);
@@ -19,38 +18,21 @@ void setup()
 
 
 void loop() {
- bool isInserted = false;
-  while(Serial.available()){
-	if (isInserted){
-		BT="";
-		isInserted=false;
-	}
-  	BT+=Serial.read();
-  }
-  isInserted= true;
 
-  switch(BT){
-    
-    case "forward" :
-      forward();
-    break;
-    
-    case "backward" :
-      backward();
-    break;  
-    
-    case "left" :
-      left();
-    break;  
-    
-    case "right" :
-      right();
-    break;  
- 
-    default:
-      Stop();
-    break;
+  if (Serial.available()) {
+    BT=Serial.readStringUntil('\0');
+    // Serial.print(BT+"\n");
   }
+
+  if(BT=="forward") forward();
+
+  else if(BT=="backward") backward();
+
+  else if(BT=="left") left();
+
+  else if(BT=="right") right();
+
+  else if(BT=="stop") Stop();
 
 }
 

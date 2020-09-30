@@ -1,11 +1,18 @@
 #include <AFMotor.h>
 
+// uncomment bellow if code doesn't work
+
+// AF_DCMotor motor1(1, MOTOR12_1KHZ); 
+// AF_DCMotor motor2(2, MOTOR12_1KHZ); 
+// AF_DCMotor motor3(3, MOTOR34_1KHZ);
+// AF_DCMotor motor4(4, MOTOR34_1KHZ);
+
 AF_DCMotor motor1(1);
 AF_DCMotor motor2(2);
 AF_DCMotor motor3(3);
 AF_DCMotor motor4(4);
 
-char BT='S';
+char BT;
 
 void setup(){
   Serial.begin(9600);
@@ -18,7 +25,7 @@ void setup(){
 
 
 void loop() {
-  if (Serial.available()) {
+  if (Serial.available()>0) {
     BT=Serial.read();
     Serial.print(BT+"\n");
     switch(BT){

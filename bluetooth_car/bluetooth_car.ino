@@ -6,8 +6,8 @@ AF_DCMotor motor3(3);
 AF_DCMotor motor4(4);
 
 char BT='S';
-void setup()
-{
+
+void setup(){
   Serial.begin(9600);
   motor1.setSpeed(255);
   motor2.setSpeed(255);
@@ -18,30 +18,32 @@ void setup()
 
 
 void loop() {
-   
-  BT=Serial.read();
-  switch(BT){
-    
-    case 'F' :
-      forward();
-    break;
-    
-    case 'B' :
-      backward();
-    break;  
-    
-    case 'L' :
-      left();
-    break;  
-    
-    case 'R' :
-      right();
-    break;  
-    
-    default:
-      Stop();
-    break;
-  }
+  if (Serial.available()) {
+    BT=Serial.read();
+    Serial.print(BT+"\n");
+    switch(BT){
+      
+      case 'F' :
+        forward();
+      break;
+      
+      case 'B' :
+        backward();
+      break;  
+      
+      case 'L' :
+        left();
+      break;  
+      
+      case 'R' :
+        right();
+      break;  
+      
+      default:
+        Stop();
+      break;
+    }
+ }else Stop();
 
 }
 

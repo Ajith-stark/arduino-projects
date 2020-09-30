@@ -27,7 +27,7 @@ void setup(){
 void loop() {
   if (Serial.available()>0) {
     BT=Serial.read();
-    Serial.print(BT+"\n");
+    // Serial.print(BT+"\n");
     switch(BT){
       
       case 'F' :

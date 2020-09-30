@@ -19,7 +19,7 @@ void setup(){
 
 void loop() {
 
-  if (Serial.available()) {
+  if (Serial.available()>0) {
     BT=Serial.readStringUntil('\0');
     // Serial.print(BT+"\n");
   }

@@ -1,5 +1,5 @@
-bool DEBUG = false;
 char BTdata;
+
 int LEDs[4] ={3,4,5,6}; // pin 3 4 5 6 are LED1 LED2 .... 
 
 void setup(){
@@ -9,10 +9,10 @@ void setup(){
 
 
 void loop(){
-    if(Serial.available()){
+    if(Serial.available()>0){
      // if bluetooth provides data 
         BTdata=Serial.read();
-
+        // Serial.print(BTdata); 
         switch (BTdata){
             
             case 'F':

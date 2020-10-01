@@ -3,8 +3,8 @@
 int LEDs[4] ={3,4,5,6}; // pin 3 4 5 6 are LED1 LED2 .... 
 
 void setup(){
-    	Serial.begin(9600);
-    	pinMode(LEDs[0],OUTPUT); // make all pins output
+    Serial.begin(9600);
+    pinMode(LEDs[0],OUTPUT); // make all pins output
 	pinMode(LEDs[1],OUTPUT);
 	pinMode(LEDs[2],OUTPUT);  
 	pinMode(LEDs[3],OUTPUT); 
@@ -14,12 +14,10 @@ void setup(){
 
 void loop(){
     if(Serial.available()>0){
-     // if bluetooth provides data 
-
-       char BTdata=Serial.read();
+        char BTdata=Serial.read();
         Serial.print(BTdata);
-	Serial.print("\n");
- 	// if (BTdata=='F') Serial.print("YEAAA works!\n");
+        Serial.print("\n");
+ 	    // if (BTdata=='F') Serial.print("YEAAA works!\n");
         switch (BTdata){
             
             case 'F':
@@ -42,10 +40,7 @@ void loop(){
                 digitalWrite(LEDs[3],HIGH);
                 break;
         }
-        //delay(1000);
-
     }else {
-        // if bluetooth wont get any data turn off all
         digitalWrite(LEDs[0],LOW);
         digitalWrite(LEDs[1],LOW);
         digitalWrite(LEDs[2],LOW);

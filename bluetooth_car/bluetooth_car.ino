@@ -1,6 +1,6 @@
 #include <AFMotor.h>
 
-bool DEBUG = true;
+bool DEBUG = false;
 char BT; 
 
 

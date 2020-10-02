@@ -1,6 +1,8 @@
 #include <AFMotor.h>
+#include <SoftwareSerial.h> 
+SoftwareSerial Bluetooth(2, 13);  // RX, TX   (arduino's pin 2 is RX & pin 13 is TX)
 
-bool DEBUG = false;
+bool DEBUG = true;
 char BT; 
 
 
@@ -17,15 +19,21 @@ AF_DCMotor motor4(4, MOTOR34_1KHZ);
 
 void setup(){
   Serial.begin(9600);
+  Bluetooth.begin(9600);
   // Stop();
 }
 
 
 void loop() {
-  if (Serial.available()>0) {
-    BT=Serial.read();
+  if (Bluetooth.available()>0) {
+
+    BT=Bluetooth.read();
     Stop();
-    if (DEBUG) Serial.print(BT+"\n");
+    
+    if (DEBUG){ 
+      Serial.print(BT);
+      Serial.print("\n");
+    }
 
     switch(BT){
       

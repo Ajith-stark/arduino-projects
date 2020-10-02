@@ -17,45 +17,42 @@ AF_DCMotor motor4(4, MOTOR34_1KHZ);
 
 void setup(){
   Serial.begin(9600);
-  Stop();
+  // Stop();
 }
 
 
 void loop() {
   if (Serial.available()>0) {
     BT=Serial.read();
+    Stop();
     if (DEBUG) Serial.print(BT+"\n");
 
     switch(BT){
       
       case 'F' :
         forward();
-        if (DEBUG) Serial.print("forward\n");
+        // if (DEBUG) Serial.print("forward\n");
       break;
       
       case 'B' :
-        backward();
-        if (DEBUG) Serial.print("backward\n");
+        back();
+        // if (DEBUG) Serial.print("backward\n");
       break;  
       
       case 'L' :
         left();
-        if (DEBUG) Serial.print("left\n");
+        // if (DEBUG) Serial.print("left\n");
       break;  
       
       case 'R' :
         right();
-        if (DEBUG) Serial.print("right\n");
+        // if (DEBUG) Serial.print("right\n");
       break;  
       
       default:
-        Stop();
+        // Stop();
       break;
   }
- }else{
-   if(DEBUG) Serial.print("shit no data was received so stoped car\n");
-  Stop();
-
  }
 
 }
@@ -72,7 +69,7 @@ void forward()
   motor4.run(FORWARD); 
 }
 
-void backward()
+void back()
 {
   motor1.setSpeed(255); 
   motor1.run(BACKWARD); 
